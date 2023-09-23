@@ -5,8 +5,7 @@ class Pokemon(models.Model):
     title = models.CharField("Название (рус.)", max_length=255)
     title_en = models.CharField("Название (англ.)", max_length=255, blank=True)
     title_jp = models.CharField("Название (яп.)", max_length=255, blank=True)
-    image = models.ImageField("Картинка", blank=True, null=True,
-                              upload_to="pokemons")
+    image = models.ImageField("Картинка", blank=True, null=True, upload_to="pokemons")
     description = models.TextField("Описание", blank=True)
 
     previous_evolution = models.ForeignKey(
@@ -18,12 +17,12 @@ class Pokemon(models.Model):
         related_name="next_evolutions",
     )
 
-    def __str__(self):
-        return self.title
-
     class Meta:
         verbose_name = "Тип покемона"
         verbose_name_plural = "Типы покемонов"
+
+    def __str__(self):
+        return self.title
 
 
 class PokemonEntity(models.Model):
@@ -38,7 +37,6 @@ class PokemonEntity(models.Model):
     strength = models.IntegerField("Атака", default=1)
     defence = models.IntegerField("Защита", default=1)
     stamina = models.IntegerField("Выносливость", default=1)
-
     pokemon = models.ForeignKey(
         Pokemon,
         on_delete=models.CASCADE,
@@ -46,9 +44,9 @@ class PokemonEntity(models.Model):
         related_name="pokemon_entity",
     )
 
-    def __str__(self):
-        return f"{self.pokemon.title}: {self.lat} - {self.lon}"
-
     class Meta:
         verbose_name = "Покемон"
         verbose_name_plural = "Покемоны"
+
+    def __str__(self):
+        return f"{self.pokemon.title}: {self.lat} - {self.lon}"
