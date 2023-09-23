@@ -33,11 +33,11 @@ class PokemonEntity(models.Model):
                                        blank=True)
     disappeared_at = models.DateTimeField("Время исчезновения", null=True,
                                           blank=True)
-    level = models.IntegerField("Уровень", default=1)
-    helth = models.IntegerField("Здоровье", default=100)
-    strength = models.IntegerField("Атака", default=1)
-    defence = models.IntegerField("Защита", default=1)
-    stamina = models.IntegerField("Выносливость", default=1)
+    level = models.IntegerField("Уровень", blank=True, null=True)
+    helth = models.IntegerField("Здоровье", blank=True, null=True)
+    strength = models.IntegerField("Атака", blank=True, null=True)
+    defence = models.IntegerField("Защита", blank=True, null=True)
+    stamina = models.IntegerField("Выносливость", blank=True, null=True)
     pokemon = models.ForeignKey(
         Pokemon,
         on_delete=models.CASCADE,
