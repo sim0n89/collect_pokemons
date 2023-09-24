@@ -38,7 +38,7 @@ class PokemonEntity(models.Model):
     strength = models.IntegerField("Атака", blank=True, null=True)
     defence = models.IntegerField("Защита", blank=True, null=True)
     stamina = models.IntegerField("Выносливость", blank=True, null=True)
-    pokemon = models.ForeignKey(
+    pokemon_type = models.ForeignKey(
         Pokemon,
         on_delete=models.CASCADE,
         verbose_name="Тип покемона",
@@ -50,4 +50,4 @@ class PokemonEntity(models.Model):
         verbose_name_plural = "Покемоны"
 
     def __str__(self):
-        return f"{self.pokemon.title}: {self.lat} - {self.lon}"
+        return f"{self.pokemon_type.title}: {self.lat} - {self.lon}"
