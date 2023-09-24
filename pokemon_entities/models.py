@@ -38,11 +38,11 @@ class PokemonEntity(models.Model):
     strength = models.IntegerField("Атака", blank=True, null=True)
     defence = models.IntegerField("Защита", blank=True, null=True)
     stamina = models.IntegerField("Выносливость", blank=True, null=True)
-    pokemon_type = models.ForeignKey(
+    pokemon = models.ForeignKey(
         Pokemon,
         on_delete=models.CASCADE,
         verbose_name="Тип покемона",
-        related_name="pokemon_entity",
+        related_name="entities",
     )
 
     class Meta:

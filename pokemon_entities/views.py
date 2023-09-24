@@ -39,7 +39,7 @@ def show_all_pokemons(request):
         disappeared_at__gte=time_now
     )
     for pokemon_entity in pokemon_entities:
-        pokemon_image = pokemon_entity.pokemon_type.image
+        pokemon_image = pokemon_entity.pokemon.image
         image_url = check_image(request, pokemon_image)
         add_pokemon(
             folium_map,
@@ -78,7 +78,7 @@ def show_pokemon(request, pokemon_id):
 
     image_url = check_image(request, pokemon.image)
     pokemon_entities = PokemonEntity.objects.filter(
-        pokemon_type=pokemon,
+        pokemon=pokemon,
         appeared_at__lte=time_now,
         disappeared_at__gte=time_now,
     )
